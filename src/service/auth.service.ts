@@ -1,12 +1,11 @@
-import prisma from '../prisma/prisma.js';
 import bcrypt from 'bcrypt';
-import User from '../model/user.model.js';
-import type { AuthDto, LoginDto } from '../types/auth.type.js';
-import { ValidationError } from '../errors/validationError.js';
+import User from '../model/user.model';
+import type { AuthDto, LoginDto } from '../types/auth.type';
+import { ValidationError } from '../errors/validationError';
 import jwt from 'jsonwebtoken';
-import { ForbiddenError } from '../errors/forbiddenError.js';
-import { NotFoundError } from '../errors/notFoundError.js';
-import type { AuthPayload } from '../types/auth.type.js';
+import { ForbiddenError } from '../errors/forbiddenError';
+import { NotFoundError } from '../errors/notFoundError';
+import type { AuthPayload } from '../types/auth.type';
 import {
   findRefreshTokenWithUser,
   findUserRepo,
@@ -14,7 +13,7 @@ import {
   rotateRefreshToken,
   saveRefreshToken,
   signupRepository,
-} from '../repository/auth.repository.js';
+} from '../repository/auth.repository';
 
 // 회원가입 서비스
 export const signupService = async (data: AuthDto) => {

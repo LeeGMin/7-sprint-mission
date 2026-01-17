@@ -2,7 +2,7 @@ import multer from 'multer';
 import type { FileFilterCallback } from 'multer';
 import path from 'path';
 import fs from 'fs';
-import { ValidationError } from '../errors/validationError.js';
+import { ValidationError } from '../errors/validationError';
 import type { Request } from 'express';
 
 const ensureDir = (dir: string) => {

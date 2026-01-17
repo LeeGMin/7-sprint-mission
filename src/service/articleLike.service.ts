@@ -1,11 +1,11 @@
-import { ValidationError } from '../errors/validationError.js';
-import { NotFoundError } from '../errors/notFoundError.js';
-import { findArticle } from '../repository/article.repository.js';
+import { ValidationError } from '../errors/validationError';
+import { NotFoundError } from '../errors/notFoundError';
+import { findArticle } from '../repository/article.repository';
 import {
   articleLikeRepository,
   findArticleLike,
   unLikeArticleRepository,
-} from '../repository/articleLike.repository.js';
+} from '../repository/articleLike.repository';
 
 // 게시글 좋아요 서비스
 export const likeArticleService = async (userId: bigint, articleId: bigint): Promise<void> => {

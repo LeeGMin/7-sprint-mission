@@ -1,6 +1,5 @@
-import { useImperativeHandle } from 'react';
-import prisma from '../prisma/prisma.js';
-import type { UpdateUserDto } from '../types/user.type.js';
+import prisma from '../prisma/prisma';
+import type { UpdateUserDto } from '../types/user.type';
 import type { Prisma } from '@prisma/client';
 
 //유저 조회

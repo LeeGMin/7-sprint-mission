@@ -1,5 +1,5 @@
-import prisma from '../prisma/prisma.js';
-import { ValidationError } from '../errors/validationError.js';
+import prisma from '../prisma/prisma';
+import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
 export const validateSignup = async (req: Request, res: Response, next: NextFunction) => {

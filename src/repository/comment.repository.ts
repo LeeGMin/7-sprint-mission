@@ -1,4 +1,4 @@
-import prisma from '../prisma/prisma.js';
+import prisma from '../prisma/prisma';
 
 export const findComment = async (commentId: bigint) => {
   const comment = await prisma.comment.findUnique({ where: { id: commentId } });

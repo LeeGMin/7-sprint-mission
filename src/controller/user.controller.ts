@@ -1,4 +1,4 @@
-import { NotFoundError } from '../errors/notFoundError.js';
+import { NotFoundError } from '../errors/notFoundError';
 import type { Request, Response, NextFunction } from 'express';
 import {
   ChangePasswordService,
@@ -7,9 +7,9 @@ import {
   getMyProductService,
   getMyProfileService,
   updateUserService,
-} from '../service/user.service.js';
-import { UnauthenticatedError } from '../errors/unauthenticatedError.js';
-import type { ChangePasswordDto, UpdateUserDto } from '../types/user.type.js';
+} from '../service/user.service';
+import { UnauthenticatedError } from '../errors/unauthenticatedError';
+import type { ChangePasswordDto, UpdateUserDto } from '../types/user.type';
 
 //프로필 조회 컨트롤러
 export const getMyProfile = async (req: Request, res: Response, next: NextFunction) => {

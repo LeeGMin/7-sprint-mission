@@ -8,16 +8,16 @@ import {
   createArticleComment,
   getArticleComments,
   uploadArticleImage,
-} from '../controller/article.controller.js';
-import { likeArticle, unLikeArticle } from '../controller/articleLike.controller.js';
+} from '../controller/article.controller';
+import { likeArticle, unLikeArticle } from '../controller/articleLike.controller';
 import {
   validationArticleCreate,
   validationArticleUpdate,
-} from '../middlewares/article.validationError.js';
-import { validateComment } from '../middlewares/comment.validationError.js';
-import { validateArticleId } from '../middlewares/id.validationError.js';
-import { createUploader } from '../middlewares/upload.js';
-import { authenticateUser, authenticateUserOptional } from '../middlewares/auth.middleware.js';
+} from '../middlewares/article.validationError';
+import { validateComment } from '../middlewares/comment.validationError';
+import { validateArticleId } from '../middlewares/id.validationError';
+import { createUploader } from '../middlewares/upload';
+import { authenticateUser, authenticateUserOptional } from '../middlewares/auth.middleware';
 
 const articleRouter = express.Router();
 const articleUpload = createUploader('article');

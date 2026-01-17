@@ -1,8 +1,8 @@
-import prisma from '../prisma/prisma.js';
+import prisma from '../prisma/prisma';
 import type { Prisma } from '@prisma/client';
-import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type.js';
-import { cursorPaginationOption } from '../utils/cursorPagination.js';
-import type { CommentDto } from '../types/comment.type.js';
+import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type';
+import { cursorPaginationOption } from '../utils/cursorPagination';
+import type { CommentDto } from '../types/comment.type';
 
 interface FindOption {
   skip: number;
@@ -135,7 +135,7 @@ export const createArticleCommnetRepository = async (
 export const getArticleCommentsRepository = async (
   articleId: bigint,
   limit: number,
-  cursor: bigint,
+  cursor: bigint | undefined,
 ) => {
   const comments = await prisma.comment.findMany(
     cursorPaginationOption({

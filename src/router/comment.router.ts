@@ -1,8 +1,8 @@
 import express from 'express';
-import { updateComment, deleteComment } from '../controller/comment.controller.js';
-import { validateComment } from '../middlewares/comment.validationError.js';
-import { validateCommentId } from '../middlewares/id.validationError.js';
-import { authenticateUser } from '../middlewares/auth.middleware.js';
+import { updateComment, deleteComment } from '../controller/comment.controller';
+import { validateComment } from '../middlewares/comment.validationError';
+import { validateCommentId } from '../middlewares/id.validationError';
+import { authenticateUser } from '../middlewares/auth.middleware';
 
 const commentRouter = express.Router();
 

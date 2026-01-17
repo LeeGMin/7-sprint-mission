@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
-import articleRouter from './router/article.router.js';
-import productRouter from './router/product.router.js';
-import { errorHandler } from './middlewares/errorHandler.js';
-import commentRouter from './router/comment.router.js';
-import authRouter from './router/auth.router.js';
-import userRouter from './router/user.router.js';
+import articleRouter from './router/article.router';
+import productRouter from './router/product.router';
+import { errorHandler } from './middlewares/errorHandler';
+import commentRouter from './router/comment.router';
+import authRouter from './router/auth.router';
+import userRouter from './router/user.router';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 

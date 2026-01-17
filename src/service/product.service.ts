@@ -1,8 +1,8 @@
-import { ProductList, ProductDetail } from '../model/product.model.js';
-import Comment from '../model/comment.model.js';
-import { NotFoundError } from '../errors/notFoundError.js';
-import { ForbiddenError } from '../errors/forbiddenError.js';
-import type { createProductDto, updateProductDto } from '../types/product.type.js';
+import { ProductList, ProductDetail } from '../model/product.model';
+import Comment from '../model/comment.model';
+import { NotFoundError } from '../errors/notFoundError';
+import { ForbiddenError } from '../errors/forbiddenError';
+import type { createProductDto, updateProductDto } from '../types/product.type';
 import {
   createProductCommentRepo,
   createProductRepo,
@@ -12,7 +12,13 @@ import {
   getProductDetailRepo,
   getProductListRepo,
   updateProductRepo,
-} from '../repository/product.repository.js';
+} from '../repository/product.repository';
+
+const validateOwner = async (productId: bigint, userId: bigint) => {
+  const product = await findDetailProduct(productId);
+  if (!product) throw new NotFoundError('상품을 찾을 수 없습니다.');
+  if (product.userId !== userId) throw new ForbiddenError('권한이 없습니다.');
+};
 
 // 상품 목록 조회 서비스
 export const getProductService = async (
@@ -59,11 +65,8 @@ export const updateProductService = async (
   userId: bigint,
   dto: updateProductDto,
 ) => {
-  const product = await findDetailProduct(productId);
-  if (!product) throw new NotFoundError('상품을 찾을 수 없습니다.');
-
-  if (product.userId !== userId)
-    throw new ForbiddenError('사용자님이 작성한 상품만 수정할 수 있습니다.');
+  // 검증로직 검사
+  await validateOwner(productId, userId);
 
   const updatedEntity = await updateProductRepo(productId, dto);
 
@@ -72,12 +75,8 @@ export const updateProductService = async (
 
 // 상품 삭제 서비스
 export const deleteProductService = async (productId: bigint, userId: bigint): Promise<void> => {
-  const product = await findDetailProduct(productId);
-  if (!product) throw new NotFoundError('상품을 찾을 수 없습니다.');
+  await validateOwner(productId, userId);
 
-  if (product.userId !== userId) {
-    throw new ForbiddenError('사용자님이 작성한 상품만 삭제할 수 있습니다.');
-  }
   await deleteProductRepo(productId);
 };
 

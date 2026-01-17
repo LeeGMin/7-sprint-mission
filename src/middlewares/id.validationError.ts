@@ -1,4 +1,4 @@
-import { ValidationError } from '../errors/validationError.js';
+import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
 const validateId = (id: unknown) => {

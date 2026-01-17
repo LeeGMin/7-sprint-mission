@@ -1,6 +1,6 @@
-import { ValidationError } from '../errors/validationError.js';
+import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
-import prisma from '../prisma/prisma.js';
+import prisma from '../prisma/prisma';
 
 export const validateUpdateProfile = async (req: Request, res: Response, next: NextFunction) => {
   try {

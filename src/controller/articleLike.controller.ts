@@ -1,7 +1,7 @@
-import { UnauthenticatedError } from '../errors/unauthenticatedError.js';
+import { UnauthenticatedError } from '../errors/unauthenticatedError';
 import type { Request, Response, NextFunction } from 'express';
 import type { ParamsDictionary } from 'express-serve-static-core';
-import { likeArticleService, unLikeArticleService } from '../service/articleLike.service.js';
+import { likeArticleService, unLikeArticleService } from '../service/articleLike.service';
 
 interface ArticleParams extends ParamsDictionary {
   articleId: string;

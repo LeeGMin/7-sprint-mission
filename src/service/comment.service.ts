@@ -1,10 +1,10 @@
-import { ForbiddenError } from '../errors/forbiddenError.js';
-import { NotFoundError } from '../errors/notFoundError.js';
+import { ForbiddenError } from '../errors/forbiddenError';
+import { NotFoundError } from '../errors/notFoundError';
 import {
   deleteCommentRepo,
   findComment,
   updateCommentRepo,
-} from '../repository/comment.repository.js';
+} from '../repository/comment.repository';
 
 // 댓글 수정 서비스
 export const updateCommentService = async (commentId: bigint, userId: bigint, content: string) => {

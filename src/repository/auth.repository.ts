@@ -1,5 +1,4 @@
-import { useImperativeHandle } from 'react';
-import prisma from '../prisma/prisma.js';
+import prisma from '../prisma/prisma';
 
 //유저 존재여부 확인용
 export const findUserRepo = async (email: string) => {

@@ -1,7 +1,7 @@
-import { ValidationError } from '../errors/validationError.js';
+import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 import type { ParamsDictionary } from 'express-serve-static-core';
-import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type.js';
+import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type';
 import {
   getArticleService,
   getArticleDetailService,
@@ -10,9 +10,8 @@ import {
   deleteArticleService,
   createArticleCommentService,
   getArticleCommentsService,
-} from '../service/article.service.js';
-import type { CommentDto } from '../types/comment.type.js';
-import { bigint } from 'superstruct';
+} from '../service/article.service';
+import type { CommentDto } from '../types/comment.type';
 
 // articleId 파라미터 인터페이스
 interface ArticleParams extends ParamsDictionary {

@@ -1,10 +1,9 @@
-import Article from '../model/article.model.js';
-import Comment from '../model/comment.model.js';
-import { Prisma } from '@prisma/client';
-import { NotFoundError } from '../errors/notFoundError.js';
-import { ForbiddenError } from '../errors/forbiddenError.js';
-import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type.js';
-import type { CommentDto } from '../types/comment.type.js';
+import Article from '../model/article.model';
+import Comment from '../model/comment.model';
+import { NotFoundError } from '../errors/notFoundError';
+import { ForbiddenError } from '../errors/forbiddenError';
+import type { CreateArticleDto, UpdateArticleDto } from '../types/article.type';
+import type { CommentDto } from '../types/comment.type';
 import {
   createArticleCommnetRepository,
   createArticleRepository,
@@ -14,7 +13,7 @@ import {
   findDetailArticle,
   getArticleCommentsRepository,
   updateArticleRepository,
-} from '../repository/article.repository.js';
+} from '../repository/article.repository';
 
 // 게시글 존재 여부, 유저 검증 로직
 const validateOwner = async (articleId: bigint, userId: bigint): Promise<void> => {

@@ -8,15 +8,15 @@ import {
   createProductComment,
   getProductComment,
   uploadProductImage,
-} from '../controller/product.controller.js';
-import { likeProduct } from '../controller/productLike.controller.js';
+} from '../controller/product.controller';
+import { likeProduct } from '../controller/productLike.controller';
 import {
   validateProductCreate,
   validationProductUpdate,
-} from '../middlewares/product.validationError.js';
-import { createUploader } from '../middlewares/upload.js';
-import { validateProductId } from '../middlewares/id.validationError.js';
-import { authenticateUser, authenticateUserOptional } from '../middlewares/auth.middleware.js';
+} from '../middlewares/product.validationError';
+import { createUploader } from '../middlewares/upload';
+import { validateProductId } from '../middlewares/id.validationError';
+import { authenticateUser, authenticateUserOptional } from '../middlewares/auth.middleware';
 
 const productRouter = express.Router();
 const productUpload = createUploader('product');

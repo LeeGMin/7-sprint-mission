@@ -1,10 +1,10 @@
-import { NotFoundError } from '../errors/notFoundError.js';
-import { findDetailProduct } from '../repository/product.repository.js';
+import { NotFoundError } from '../errors/notFoundError';
+import { findDetailProduct } from '../repository/product.repository';
 import {
   deleteProductLikeRepo,
   isProductLikedByUser,
   productLikeRepo,
-} from '../repository/productLike.repository.js';
+} from '../repository/productLike.repository';
 
 // 상품 좋아요 서비스
 export const productLikeService = async (userId: bigint, productId: bigint) => {

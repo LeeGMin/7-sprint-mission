@@ -1,7 +1,7 @@
-import prisma from '../prisma/prisma.js';
+import prisma from '../prisma/prisma';
 import type { Prisma } from '@prisma/client';
-import type { createProductDto, updateProductDto } from '../types/product.type.js';
-import { cursorPaginationOption } from '../utils/cursorPagination.js';
+import type { createProductDto, updateProductDto } from '../types/product.type';
+import { cursorPaginationOption } from '../utils/cursorPagination';
 
 // 상품 존재여부 확인 로직
 export const findDetailProduct = async (productId: bigint) => {

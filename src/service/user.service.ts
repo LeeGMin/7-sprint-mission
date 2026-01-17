@@ -1,10 +1,9 @@
-import prisma from '../prisma/prisma.js';
-import { ProductList } from '../model/product.model.js';
-import Article from '../model/article.model.js';
-import { NotFoundError } from '../errors/notFoundError.js';
-import { ForbiddenError } from '../errors/forbiddenError.js';
-import User from '../model/user.model.js';
-import type { ChangePasswordDto, UpdateUserDto } from '../types/user.type.js';
+import { ProductList } from '../model/product.model';
+import Article from '../model/article.model';
+import { NotFoundError } from '../errors/notFoundError';
+import { ForbiddenError } from '../errors/forbiddenError';
+import User from '../model/user.model';
+import type { ChangePasswordDto, UpdateUserDto } from '../types/user.type';
 import bcrypt from 'bcrypt';
 import {
   changePasswordRepo,
@@ -14,8 +13,8 @@ import {
   getMyLikedProductsRepo,
   getMyProductRepo,
   updateUserRepo,
-} from '../repository/user.repository.js';
-import { ValidationError } from '../errors/validationError.js';
+} from '../repository/user.repository';
+import { ValidationError } from '../errors/validationError';
 
 //프로필 조회 서비스
 export const getMyProfileService = async (userId: bigint) => {

@@ -1,10 +1,9 @@
 {
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "deploy": "prisma migrate deploy",
-    "dev": "nodemon --exec \"node --loader ts-node/esm\" src/app.ts",
-    "start": "node --loader ts-node/esm src/app.ts"
+    "dev": "nodemon --exec tsx src/app.ts",
+    "start": "tsx src/app.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

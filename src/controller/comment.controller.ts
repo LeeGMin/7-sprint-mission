@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import type { ParamsDictionary } from 'express-serve-static-core';
-import { updateCommentService, deleteCommentService } from '../service/comment.service.js';
-import type { CommentDto } from '../types/comment.type.js';
+import { updateCommentService, deleteCommentService } from '../service/comment.service';
+import type { CommentDto } from '../types/comment.type';
 
 interface CommentParams extends ParamsDictionary {
   commentId: string;

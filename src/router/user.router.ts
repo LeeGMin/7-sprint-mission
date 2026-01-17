@@ -1,5 +1,5 @@
 import express from 'express';
-import { authenticateUser } from '../middlewares/auth.middleware.js';
+import { authenticateUser } from '../middlewares/auth.middleware';
 import {
   getMyProfile,
   updateMyProfile,
@@ -7,12 +7,9 @@ import {
   getMyProduct,
   getMyLikedProducts,
   getMyLikedArticles,
-} from '../controller/user.controller.js';
-import { myProfileUpload } from '../middlewares/upload.js';
-import {
-  validateUpdateProfile,
-  validateChangePassword,
-} from '../middlewares/user.validationError.js';
+} from '../controller/user.controller';
+import { myProfileUpload } from '../middlewares/upload';
+import { validateUpdateProfile, validateChangePassword } from '../middlewares/user.validationError';
 
 const userRouter = express.Router();
 

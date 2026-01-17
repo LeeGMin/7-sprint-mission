@@ -7,12 +7,11 @@ import {
   deleteProductService,
   createProductCommentService,
   getProductCommentService,
-} from '../service/product.service.js';
-import { ValidationError } from '../errors/validationError.js';
-import { UnauthenticatedError } from '../errors/unauthenticatedError.js';
-import type { createProductDto, updateProductDto } from '../types/product.type.js';
-import type { CommentDto } from '../types/comment.type.js';
-import type { ProductParams } from '../types/product.type.js';
+} from '../service/product.service';
+import { ValidationError } from '../errors/validationError';
+import type { createProductDto, updateProductDto } from '../types/product.type';
+import type { CommentDto } from '../types/comment.type';
+import type { ProductParams } from '../types/product.type';
 
 // 상품 목록 조회 컨트롤러
 export const productGet = async (req: Request, res: Response, next: NextFunction) => {

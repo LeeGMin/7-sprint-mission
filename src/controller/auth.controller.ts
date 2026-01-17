@@ -3,10 +3,10 @@ import {
   loginService,
   refreshService,
   logoutService,
-} from '../service/auth.service.js';
-import { ValidationError } from '../errors/validationError.js';
+} from '../service/auth.service';
+import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
-import type { AuthDto, LoginDto } from '../types/auth.type.js';
+import type { AuthDto, LoginDto } from '../types/auth.type';
 
 // 회원가입 컨트롤러
 export const signup = async (req: Request<{}, {}, AuthDto>, res: Response, next: NextFunction) => {
