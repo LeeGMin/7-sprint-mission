@@ -1,7 +1,7 @@
 import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
-export const validateComment = (req: Request, res: Response, next: NextFunction) => {
+export const validateComment = (req: Request, _res: Response, next: NextFunction) => {
   try {
     const { content } = req.body;
 

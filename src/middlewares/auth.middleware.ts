@@ -20,7 +20,11 @@ export const authenticateUser = (req: Request, res: Response, next: NextFunction
   }
 };
 
-export const authenticateUserOptional = async (req: Request, res: Response, next: NextFunction) => {
+export const authenticateUserOptional = async (
+  req: Request,
+  _res: Response,
+  next: NextFunction,
+) => {
   const token = req.cookies.accessToken;
 
   // 토큰이 없어도 에러를 던지지 않고 그냥 next()로 보냅니다.

@@ -1,6 +1,6 @@
 export interface UpdateUserDto {
-  nickname?: string | undefined;
-  image?: string | undefined;
+  nickname?: string;
+  image?: string;
 }
 
 export type ChangePasswordDto = {

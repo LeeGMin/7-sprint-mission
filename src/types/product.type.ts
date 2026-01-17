@@ -4,14 +4,14 @@ export interface ProductParams extends ParamsDictionary {
   productId: string;
 }
 
-export interface createProductDto {
+export interface CreateProductDto {
   name: string;
   description: string;
   price: number;
   tags: string[];
 }
 
-export interface updateProductDto {
+export interface UpdateProductDto {
   name?: string;
   description?: string;
   price?: number;

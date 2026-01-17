@@ -2,7 +2,7 @@ import { ProductList, ProductDetail } from '../model/product.model';
 import Comment from '../model/comment.model';
 import { NotFoundError } from '../errors/notFoundError';
 import { ForbiddenError } from '../errors/forbiddenError';
-import type { createProductDto, updateProductDto } from '../types/product.type';
+import type { CreateProductDto, UpdateProductDto } from '../types/product.type';
 import {
   createProductCommentRepo,
   createProductRepo,
@@ -52,7 +52,7 @@ export const getProductDetailService = async (productId: bigint, userId: bigint 
 };
 
 // 상품 등록 서비스
-export const createProductService = async (userId: bigint, dto: createProductDto) => {
+export const createProductService = async (userId: bigint, dto: CreateProductDto) => {
   const createEntity = await createProductRepo(userId, dto);
   const product = ProductDetail.fromEntity(createEntity);
 
@@ -63,7 +63,7 @@ export const createProductService = async (userId: bigint, dto: createProductDto
 export const updateProductService = async (
   productId: bigint,
   userId: bigint,
-  dto: updateProductDto,
+  dto: UpdateProductDto,
 ) => {
   // 검증로직 검사
   await validateOwner(productId, userId);

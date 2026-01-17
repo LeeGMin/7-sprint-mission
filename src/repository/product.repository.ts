@@ -1,6 +1,6 @@
 import prisma from '../prisma/prisma';
 import type { Prisma } from '@prisma/client';
-import type { createProductDto, updateProductDto } from '../types/product.type';
+import type { CreateProductDto, UpdateProductDto } from '../types/product.type';
 import { cursorPaginationOption } from '../utils/cursorPagination';
 
 // 상품 존재여부 확인 로직
@@ -75,7 +75,7 @@ export const getProductDetailRepo = async (productId: bigint, userId: bigint | n
 };
 
 //상품 등록
-export const createProductRepo = async (userId: bigint, dto: createProductDto) => {
+export const createProductRepo = async (userId: bigint, dto: CreateProductDto) => {
   const { name, description, price, tags } = dto;
 
   const createEntity = await prisma.product.create({
@@ -91,7 +91,7 @@ export const createProductRepo = async (userId: bigint, dto: createProductDto) =
 };
 
 //상품 수정
-export const updateProductRepo = async (productId: bigint, dto: updateProductDto) => {
+export const updateProductRepo = async (productId: bigint, dto: UpdateProductDto) => {
   const { name, description, price, tags, images } = dto;
 
   const updateData: Prisma.ProductUpdateInput = {

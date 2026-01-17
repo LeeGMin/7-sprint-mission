@@ -8,7 +8,7 @@ const validateId = (id: unknown) => {
 };
 
 const createIdValidator = (paramName: string) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     try {
       const id = req.params[paramName];
       validateId(id);

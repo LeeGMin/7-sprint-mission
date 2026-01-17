@@ -5,7 +5,12 @@ interface CustomError extends Error {
   code?: string; // Prisma 에러 코드 등을 위해 추가
 }
 
-export const errorHandler = (err: CustomError, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (
+  err: CustomError,
+  _req: Request,
+  res: Response,
+  _next: NextFunction,
+) => {
   console.error(err);
 
   if (err.statusCode) {
@@ -20,7 +25,7 @@ export const errorHandler = (err: CustomError, req: Request, res: Response, next
     });
   }
 
-  res.status(500).json({
+  return res.status(500).json({
     message: '서버 내부 오류',
   });
 };

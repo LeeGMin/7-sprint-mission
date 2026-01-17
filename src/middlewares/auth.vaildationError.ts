@@ -2,7 +2,7 @@ import prisma from '../prisma/prisma';
 import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
-export const validateSignup = async (req: Request, res: Response, next: NextFunction) => {
+export const validateSignup = async (req: Request, _res: Response, next: NextFunction) => {
   const { email, nickname, password } = req.body;
 
   if (!email || typeof email !== 'string' || !email.includes('@')) {
@@ -33,7 +33,7 @@ export const validateSignup = async (req: Request, res: Response, next: NextFunc
   next();
 };
 
-export const validateLogin = (req: Request, res: Response, next: NextFunction) => {
+export const validateLogin = (req: Request, _res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
   if (!email || typeof email !== 'string' || !email.includes('@')) {

@@ -2,7 +2,7 @@ import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 import prisma from '../prisma/prisma';
 
-export const validateUpdateProfile = async (req: Request, res: Response, next: NextFunction) => {
+export const validateUpdateProfile = async (req: Request, _res: Response, next: NextFunction) => {
   try {
     const { nickname } = req.body;
 
@@ -34,7 +34,7 @@ export const validateUpdateProfile = async (req: Request, res: Response, next: N
   }
 };
 
-export const validateChangePassword = (req: Request, res: Response, next: NextFunction) => {
+export const validateChangePassword = (req: Request, _res: Response, next: NextFunction) => {
   const { currentPassword, newPassword } = req.body;
 
   if (!currentPassword || !newPassword) {

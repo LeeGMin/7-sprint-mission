@@ -1,7 +1,7 @@
 import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
-export const validationArticleCreate = (req: Request, res: Response, next: NextFunction) => {
+export const validationArticleCreate = (req: Request, _res: Response, next: NextFunction) => {
   try {
     const { title, content } = req.body;
 
@@ -18,7 +18,7 @@ export const validationArticleCreate = (req: Request, res: Response, next: NextF
   }
 };
 
-export const validationArticleUpdate = (req: Request, res: Response, next: NextFunction) => {
+export const validationArticleUpdate = (req: Request, _res: Response, next: NextFunction) => {
   const { title, content } = req.body;
   try {
     // 아무 것도 안 보냈을 때

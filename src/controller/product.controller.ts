@@ -9,7 +9,7 @@ import {
   getProductCommentService,
 } from '../service/product.service';
 import { ValidationError } from '../errors/validationError';
-import type { createProductDto, updateProductDto } from '../types/product.type';
+import type { CreateProductDto, UpdateProductDto } from '../types/product.type';
 import type { CommentDto } from '../types/comment.type';
 import type { ProductParams } from '../types/product.type';
 
@@ -58,7 +58,7 @@ export const productFindGet = async function (
 
 // 상품 등록 컨트롤러
 export const productCreate = async function (
-  req: Request<{}, {}, createProductDto>,
+  req: Request<{}, {}, CreateProductDto>,
   res: Response,
   next: NextFunction,
 ) {
@@ -77,7 +77,7 @@ export const productCreate = async function (
 
 // 상품 수정 컨트롤러
 export const productUpdate = async function (
-  req: Request<ProductParams, {}, updateProductDto>,
+  req: Request<ProductParams, {}, UpdateProductDto>,
   res: Response,
   next: NextFunction,
 ) {
@@ -85,8 +85,12 @@ export const productUpdate = async function (
     const productId = BigInt(req.params.productId);
     const userId = BigInt(req.user!.userId);
     const nickname = req.user!.nickname;
+    const updateDto: UpdateProductDto = {
+      ...req.body,
+      ...(req.file && { image: `/uploads/product/${req.file.filename}` }),
+    };
 
-    const updateProduct = await updateProductService(productId, userId, req.body);
+    const updateProduct = await updateProductService(productId, userId, updateDto);
 
     res.status(200).json({
       message: `${nickname}님, 상품 정보가 성공적으로 수정되었습니다.`,

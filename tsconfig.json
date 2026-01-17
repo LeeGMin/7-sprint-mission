@@ -36,6 +36,10 @@
 
     // Recommended Options
     "strict": true,
+    "noImplicitAny": true, // 암시적인 any 에러 발생 (이미 strict에 포함됨)
+    "noImplicitReturns": true, // 함수에서 모든 경로가 값을 반환하는지 체크
+    "noUnusedLocals": true, // 사용하지 않는 지역 변수 에러 발생
+    "noUnusedParameters": true, // 사용하지 않는 매개변수 에러 발생
     "jsx": "react-jsx",
     "verbatimModuleSyntax": false,
     "isolatedModules": false,

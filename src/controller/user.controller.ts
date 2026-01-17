@@ -31,14 +31,12 @@ export const updateMyProfile = async (
   next: NextFunction,
 ) => {
   try {
-    if (!req.user) {
-      throw new UnauthenticatedError('유저 정보를 찾을 수 없습니다.');
-    }
-    const userId = BigInt(req.user.userId);
-    const nickname = req.body.nickname;
-    const image = req.file ? `/uploads/user/${req.file.filename}` : undefined;
-
-    const updatedUser = await updateUserService(userId, { nickname, image });
+    const userId = BigInt(req.user!.userId);
+    const updateDto: UpdateUserDto = {
+      ...req.body,
+      ...(req.file && { image: `/uploads/user/${req.file.filename}` }),
+    };
+    const updatedUser = await updateUserService(userId, updateDto);
 
     res.status(200).json({ message: '유저 정보가 성공적으로 수정되었습니다.', data: updatedUser });
   } catch (e) {

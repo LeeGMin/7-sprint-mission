@@ -13,7 +13,7 @@ import type { Prisma } from '@prisma/client';
 interface CursorPaginationArgs {
   cursor?: bigint | undefined;
   limit?: number;
-  where?: Prisma.CommentWhereInput | any;
+  where?: Prisma.CommentWhereInput;
 }
 
 export const cursorPaginationOption = ({ cursor, limit = 10, where }: CursorPaginationArgs) => {

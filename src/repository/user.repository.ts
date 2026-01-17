@@ -1,6 +1,6 @@
+import { Prisma } from '@prisma/client';
 import prisma from '../prisma/prisma';
 import type { UpdateUserDto } from '../types/user.type';
-import type { Prisma } from '@prisma/client';
 
 //유저 조회
 export const findUser = async (userId: bigint) => {

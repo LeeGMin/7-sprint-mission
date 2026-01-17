@@ -44,7 +44,7 @@ export const unLikeArticle = async (
     await unLikeArticleService(userId, articleId);
 
     res.status(204).end();
-  } catch (e: any) {
+  } catch (e) {
     next(e);
   }
 };

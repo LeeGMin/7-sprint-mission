@@ -1,7 +1,7 @@
 import { ValidationError } from '../errors/validationError';
 import type { Request, Response, NextFunction } from 'express';
 
-export const validateProductCreate = (req: Request, res: Response, next: NextFunction) => {
+export const validateProductCreate = (req: Request, _res: Response, next: NextFunction) => {
   const { name, description, price, tags } = req.body;
 
   if (!name || typeof name !== 'string' || name.trim() === '') {
@@ -23,7 +23,7 @@ export const validateProductCreate = (req: Request, res: Response, next: NextFun
   next();
 };
 
-export const validationProductUpdate = (req: Request, res: Response, next: NextFunction) => {
+export const validationProductUpdate = (req: Request, _res: Response, next: NextFunction) => {
   const { name, description, price, tags } = req.body;
 
   if (
