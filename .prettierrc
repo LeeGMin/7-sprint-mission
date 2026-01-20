@@ -1,0 +1,18 @@
+{
+  "overrides": [
+    {
+      "files": "*.sql",
+      "options": {
+        "language": "sql",
+        "keywordCase": "upper",
+        "expressionWidth": 200,
+        "dense": true,
+        "logicalAndFirst": true,
+        "linesBetweenQueries": 2,
+        "indentStyle": "space",
+        "tabWidth": 2,
+        "newlineBeforeSemicolon": false
+      }
+    }
+  ]
+}
