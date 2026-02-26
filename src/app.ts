@@ -12,6 +12,7 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import notificationRouter from './router/notification.router';
+import './listeners/notification.listener';
 
 const app = express();
 
@@ -38,7 +39,7 @@ const httpServer = createServer(app);
 
 export const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://web.postman.co'],
     credentials: true,
   },
 });
