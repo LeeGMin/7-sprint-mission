@@ -1,14 +1,5 @@
 import express from 'express';
-import {
-  productGet,
-  productFindGet,
-  productCreate,
-  productUpdate,
-  productDelete,
-  createProductComment,
-  getProductComment,
-  uploadProductImage,
-} from '../controller/product.controller';
+import { ProductController } from '../controller/product.controller';
 import { likeProduct } from '../controller/productLike.controller';
 import {
   validateProductCreate,
@@ -20,33 +11,38 @@ import { authenticateUser, authenticateUserOptional } from '../middlewares/auth.
 
 const productRouter = express.Router();
 const productUpload = createUploader('product');
+const productController = new ProductController();
+
+productRouter.get('/', authenticateUserOptional, productController.getProductList);
+productRouter.get(
+  '/:productId',
+  authenticateUserOptional,
+  validateProductId,
+  productController.getProductList,
+);
+productRouter.get('/:productId/comments', validateProductId, productController.getProductComment);
+
+productRouter.use(authenticateUser);
 
 productRouter.post(
   '/:productId/image',
-  authenticateUser,
   productUpload.single('image'),
-  uploadProductImage,
+  productController.uploadProductImage,
 );
-
-productRouter.get('/', authenticateUserOptional, productGet);
-productRouter.get('/:productId', authenticateUserOptional, validateProductId, productFindGet);
-productRouter.post('/', authenticateUser, validateProductCreate, productCreate);
+productRouter.post('/', validateProductCreate, productController.createProduct);
 productRouter.patch(
   '/:productId',
-  authenticateUser,
   validateProductId,
   validationProductUpdate,
-  productUpdate,
+  productController.productUpdate,
 );
-productRouter.delete('/:productId', authenticateUser, validateProductId, productDelete);
+productRouter.delete('/:productId', validateProductId, productController.productDelete);
 
 productRouter.post(
   '/:productId/comments',
-  authenticateUser,
   validateProductId,
-  createProductComment,
+  productController.createProductComment,
 );
-productRouter.get('/:productId/comments', validateProductId, getProductComment);
-
 productRouter.post('/:productId/like', authenticateUser, validateProductId, likeProduct);
+
 export default productRouter;
