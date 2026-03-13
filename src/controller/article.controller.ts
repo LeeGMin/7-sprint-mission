@@ -211,12 +211,12 @@ export class ArticleController {
    */
   uploadArticleImage = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const file = req.file as Express.Multer.File;
+      const file = req.file as Express.MulterS3.File;
       if (!file) {
         throw new ValidationError('이미지 파일이 필요합니다.');
       }
 
-      const imagePath = `/uploads/article/${file.filename}`;
+      const imagePath = file.location;
 
       res.status(201).json({
         message: '이미지 업로드 성공',

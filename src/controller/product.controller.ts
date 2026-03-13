@@ -205,7 +205,7 @@ export class ProductController {
   };
 
   /**
-   * 게시글 이미지 업로드 컨트롤러
+   * 상품 이미지 업로드 컨트롤러
    * @param {Request} req - 요청 객체 (file: 업로드된 이미지 파일)
    * @param {Response} res - 응답 객체 (imageUrl: 저장된 이미지 경로)
    * @param {NextFunction} next - 에러 핸들러로 넘기기 위한 함수
@@ -213,11 +213,13 @@ export class ProductController {
    */
   uploadProductImage = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.file) {
+      const file = req.file as Express.MulterS3.File;
+
+      if (!file) {
         throw new ValidationError('이미지 파일이 필요합니다.');
       }
 
-      const imagePath = `/uploads/product/${req.file.filename}`;
+      const imagePath = file.location;
 
       res.status(201).json({
         message: '이미지 업로드 성공',

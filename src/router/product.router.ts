@@ -13,15 +13,14 @@ const productRouter = express.Router();
 const productUpload = createUploader('product');
 const productController = new ProductController();
 
-productRouter.get('/', authenticateUserOptional, productController.getProductList);
-productRouter.get(
-  '/:productId',
-  authenticateUserOptional,
-  validateProductId,
-  productController.getProductList,
-);
-productRouter.get('/:productId/comments', validateProductId, productController.getProductComment);
+// /:productId 경로로 들어오는 모든 요청은 id 검증로직을 거침
+productRouter.use('/:productId', validateProductId);
 
+productRouter.get('/', authenticateUserOptional, productController.getProductList);
+productRouter.get('/:productId', authenticateUserOptional, productController.getProductList);
+productRouter.get('/:productId/comments', productController.getProductComment);
+
+// 상품 생성, 수정, 삭제, 댓글 등록, 좋아요는 로그인 상태 필수 확인
 productRouter.use(authenticateUser);
 
 productRouter.post(
@@ -30,19 +29,10 @@ productRouter.post(
   productController.uploadProductImage,
 );
 productRouter.post('/', validateProductCreate, productController.createProduct);
-productRouter.patch(
-  '/:productId',
-  validateProductId,
-  validationProductUpdate,
-  productController.productUpdate,
-);
-productRouter.delete('/:productId', validateProductId, productController.productDelete);
+productRouter.patch('/:productId', validationProductUpdate, productController.productUpdate);
+productRouter.delete('/:productId', productController.productDelete);
 
-productRouter.post(
-  '/:productId/comments',
-  validateProductId,
-  productController.createProductComment,
-);
-productRouter.post('/:productId/like', authenticateUser, validateProductId, likeProduct);
+productRouter.post('/:productId/comments', productController.createProductComment);
+productRouter.post('/:productId/like', authenticateUser, likeProduct);
 
 export default productRouter;
