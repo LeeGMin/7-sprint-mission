@@ -20,13 +20,22 @@ describe('로그인 상태 - 상품 통합 API 테스트', () => {
   beforeAll(async () => {
     // 기존 테스트 유저나 토큰이 충돌나지 않도록 정리
     await prisma.refreshToken.deleteMany({});
+    await prisma.user.deleteMany({ where: { email: testUser.email } });
 
-    await request(app).post('/auth/signup').send(testUser);
+    const signupRes = await request(app).post('/auth/signup').send(testUser);
+    if (signupRes.status !== 201) {
+      throw new Error(`회원가입 실패: ${JSON.stringify(signupRes.body)}`);
+    }
 
     const loginRes = await request(app).post('/auth/login').send({
       email: testUser.email,
       password: testUser.password,
     });
+
+    if (loginRes.status !== 200) {
+      throw new Error('로그인 실패! 쿠키를 가져올 수 없습니다.');
+    }
+
     authCookie = loginRes.get('Set-Cookie') as unknown as string[];
   });
 
