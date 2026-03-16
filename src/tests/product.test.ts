@@ -76,7 +76,7 @@ describe('로그인 상태 - 상품 통합 API 테스트', () => {
 
     expect(response.status).toBe(200);
     expect(typeof response.body).toBe('object');
-    expect(response.body.data.id).toBe(createdProductId.toString());
+    expect(response.body.data[0].id).toBe(createdProductId.toString());
   });
 
   test('PATCH /product/:productId: 등록한 상품을 성공적으로 수정해야 한다.', async () => {
