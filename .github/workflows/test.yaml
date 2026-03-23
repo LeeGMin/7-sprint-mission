@@ -37,7 +37,9 @@ jobs:
 
       - name: prisma generation
         run: npx prisma generate
-
+        env: 
+          DATABASE_URL: postgresql://user:password@localhost:5432/test_db
+          
       - name: Run Database Migration
         run: npx prisma db push
         env: 
