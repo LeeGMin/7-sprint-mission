@@ -3,7 +3,7 @@
     "build": "tsc",
     "deploy": "prisma migrate deploy",
     "dev": "nodemon --exec tsx src/app.ts",
-    "start": "tsx src/app.ts",
+    "start": "tsx src/server.ts",
     "test": "jest --passWithNoTests --logHeapUsage"
   },
   "devDependencies": {
