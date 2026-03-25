@@ -14,8 +14,7 @@ const connectionString = process.env.DATABASE_URL;
 
 // 어댑터 설정 (v7 버전에서는 이 방식이 가장 안정적입니다)
 const pool = new pg.Pool({ connectionString });
-const adapter = new PrismaPg(pool);
-
+const adapter = new PrismaPg(pool as unknown as ConstructorParameters<typeof PrismaPg>[0]);
 const prisma = new PrismaClient({
   adapter,
   log: ['error', 'warn'],
