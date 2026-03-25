@@ -4,7 +4,7 @@
     "deploy": "prisma migrate deploy",
     "dev": "nodemon --exec tsx src/app.ts",
     "start": "tsx src/app.ts",
-    "test": "jest"
+    "test": "jest --passWithNoTests --logHeapUsage"
   },
   "devDependencies": {
     "@prisma/client": "^7.4.1",
